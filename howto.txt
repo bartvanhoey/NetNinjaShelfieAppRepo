@@ -1,0 +1,13 @@
+=> npm install @expo/vector-icons
+
+ERROR code ERESOLVE npm error ERESOLVE could not resolve npm error npm error While resolving: react-dom@19.2.4 npm error Found: react@19.1.0 npm error node_modules/react npm error peerOptional react@"*" from @expo/devtools@0.1.8 npm error node_modules/@expo/devtools npm error @expo/devtools@"0.1.8" from expo@54.0.33 npm error node_modules/expo npm error peer expo@"*" from expo-constants@18.0.13 npm error node_modules/expo-constants npm error expo-constants@"~18.0.13" from expo@54.0.33 npm error 4 more (expo-linking, expo-router, expo-asset, the root project) npm error 11 more (expo-router, @expo/metro-runtime, @expo/cli,
+
+
+FIX:
+
+=> npm install react@19.2.4 react-dom@19.2.4
+
+=> rmdir /s /q node_modules
+=> del package-lock.json
+=> npm install
+=> npm install @expo/vector-icons
