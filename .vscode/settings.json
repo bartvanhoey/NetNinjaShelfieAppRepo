@@ -1,3 +1,11 @@
 {
-  "cSpell.words": ["ERESOLVE", "reactnative", "shelfie", "shelfieapp"]
+  "cSpell.words": [
+    "ERESOLVE",
+    "reactnative",
+    "shelfie",
+    "shelfieapp"
+  ],
+  "workbench.colorCustomizations": {
+    "tab.activeBorder": "#0005BC"
+  }
 }

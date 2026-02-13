@@ -19,7 +19,7 @@ const HomeScreen = () => {
         The Number 1
       </ThemedText>
       <Spacer height={10} />
-      <ThemedText>Reading List App</ThemedText>
+      <ThemedText>READING LIST APP</ThemedText>
       <Spacer />
       {/* <View style={styles.card}>
         <Text>Hello, this is a card</Text>
