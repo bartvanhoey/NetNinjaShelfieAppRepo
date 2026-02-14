@@ -1,4 +1,4 @@
-import { Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
+import { Keyboard, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TouchableWithoutFeedback, useColorScheme, View } from "react-native";
 import React, { useState } from "react";
 import ThemedView from "../../components/ThemedView";
 import ThemedText from "../../components/ThemedText";
@@ -15,6 +15,9 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const { register } = useUser();
   const [error, setError] = useState<string | null>(null);
+  const colorScheme = useColorScheme();
+      const theme =
+        Colors[colorScheme === "dark" ? "dark" : "light"] ?? Colors.light;
   
 
   async function handleSubmit(): Promise<void> {
@@ -33,49 +36,60 @@ const Register = () => {
   }
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <ThemedView style={styles.container}>
-        <ThemedText title={true} style={styles.title}>
-          Create a New Account
-        </ThemedText>
+    <ThemedView style={styles.container}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.keyboardView}
+      >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <ScrollView
+            contentContainerStyle={styles.scrollContent}
+            keyboardShouldPersistTaps="handled"
+          >
+            <ThemedText title={true} style={styles.title}>
+              Create a New Account
+            </ThemedText>
 
-        <ThemedTextInput
-          style={{ width: "80%", marginBottom: 20, color: Colors.primary }}
-          placeholder="Email"
-          placeholderTextColor="#888"
-          keyboardType="email-address"
-          autoCapitalize="none"
-          value={email}
-          onChangeText={setEmail}
-        />
+            <ThemedTextInput
+              style={{ width: "80%", marginBottom: 20, color: Colors.primary }}
+              placeholder="Email"
+              placeholderTextColor={theme.placeholderTextColor}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoFocus
+              value={email}
+              onChangeText={setEmail}
+            />
 
-        <ThemedTextInput
-          style={{ width: "80%", color: "#fff" }}
-          placeholder="Password"
-          placeholderTextColor="#888"
-          secureTextEntry
-          value={password}
-          onChangeText={setPassword}
-        />
+            <ThemedTextInput
+              style={{ width: "80%", color: "#fff" }}
+              placeholder="Password"
+              placeholderTextColor={theme.placeholderTextColor}
+              secureTextEntry
+              value={password}
+              onChangeText={setPassword}
+            />
 
-        <Spacer />
+            <Spacer />
 
-        {error && (
-          <ThemedText style={{ color: "red", marginBottom: 10 }}>
-            {error}
-          </ThemedText>
-        )}
+            {error && (
+              <ThemedText style={{ color: "red", marginBottom: 10 }}>
+                {error}
+              </ThemedText>
+            )}
 
-        <ThemedButton onPress={() => handleSubmit()}>
-          <Text style={{ color: "white", textAlign: "center" }}>Register</Text>
-        </ThemedButton>
+            <ThemedButton onPress={() => handleSubmit()}>
+              <Text style={{ color: "white", textAlign: "center" }}>Register</Text>
+            </ThemedButton>
 
-        <Spacer height={100} />
-        <Link href="/login" style={styles.link}>
-          <ThemedText style={{ textAlign: "center" }}>Login instead</ThemedText>
-        </Link>
-      </ThemedView>
-    </TouchableWithoutFeedback>
+            <Spacer height={100} />
+            <Link href="/login" style={styles.link}>
+              <ThemedText style={{ textAlign: "center" }}>Login instead</ThemedText>
+            </Link>
+          </ScrollView>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </ThemedView>
   );
 };
 
@@ -84,8 +98,15 @@ export default Register;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  keyboardView: {
+    flex: 1,
+  },
+  scrollContent: {
+    flexGrow: 1,
     justifyContent: "center",
     alignItems: "center",
+    paddingVertical: 20,
   },
   title: {
     fontSize: 18,

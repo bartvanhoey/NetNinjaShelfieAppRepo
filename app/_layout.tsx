@@ -3,7 +3,7 @@ import React, { use } from "react";
 import { Stack } from "expo-router";
 import { Colors } from "../constants/colors";
 import { StatusBar } from "expo-status-bar";
-import { UserContextProvider } from "../context/UserContext";
+import { AuthContextProvider } from "../context/AuthContext";
 import { BooksContextProvider } from "../context/BooksContext";
 
 const RootLayout = () => {
@@ -14,7 +14,7 @@ const RootLayout = () => {
   console.log("Current theme:", theme);
 
   return (
-    <UserContextProvider>
+    <AuthContextProvider>
       <BooksContextProvider>
         <StatusBar style={colorScheme === "dark" ? "dark" : "light"} />
         <Stack
@@ -33,7 +33,7 @@ const RootLayout = () => {
           <Stack.Screen name="(dashboard)" options={{ headerShown: false }} />
         </Stack>
       </BooksContextProvider>
-    </UserContextProvider>
+    </AuthContextProvider>
   );
 };
 

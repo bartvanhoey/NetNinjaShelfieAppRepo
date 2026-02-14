@@ -4,6 +4,7 @@ export const Colors = {
 
   dark: {
     textColor: "#d4d4d4",
+    placeholderTextColor: "#d4d4d4B3",
     titleColor: "#fff",
     backgroundColor: "#252231",
     navBackground: "#201e2b",
@@ -13,6 +14,7 @@ export const Colors = {
   },
   light: {
     textColor: "#625f72",
+    placeholderTextColor: "#625f72B3",
     titleColor: "#201e2b",
     backgroundColor: "#e0dfe8",
     navBackground: "#e8e7ef",

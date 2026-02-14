@@ -7,7 +7,6 @@ import ThemedLogo from "../components/ThemedLogo";
 import Spacer from "../components/Spacer";
 import ThemedText from "../components/ThemedText";
 import React from "react";
-
 const HomeScreen = () => {
   return (
     <ThemedView style={styles.container}>

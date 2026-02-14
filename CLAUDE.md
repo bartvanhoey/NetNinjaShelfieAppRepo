@@ -24,7 +24,7 @@ No test runner or linter is configured.
 - `(dashboard)/` — tab navigator (profile, books, create) with dynamic route `books/[id]` for details
 
 **State management**: React Context API with two providers:
-- `UserContext` — auth state, login/register/logout functions, session persistence
+- `AuthContext` — auth state, login/register/logout functions, session persistence
 - `BooksContext` — CRUD operations, Appwrite real-time subscriptions for live updates
 
 Access contexts via `useUser()` and `useBooks()` hooks in `hooks/`.
@@ -39,7 +39,7 @@ Access contexts via `useUser()` and `useBooks()` hooks in `hooks/`.
 
 - `app/_layout.tsx` — root layout, wraps providers
 - `lib/appwrite.ts` — Appwrite client, database/collection IDs
-- `context/UserContext.tsx` — auth logic
+- `context/AuthContext.tsx` — auth logic
 - `context/BooksContext.tsx` — book CRUD + real-time sync
 - `constants/colors.ts` — theme color definitions
 

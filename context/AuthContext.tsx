@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { account } from "../lib/appwrite";
 import { ID, Models } from "react-native-appwrite";
 
-export type UserContextType = {
+export type AuthContextType = {
   user: Models.User | null;
   login: (email: string, password: string) => Promise<void>;
   register: (email: string, password: string) => Promise<void>;
@@ -10,11 +10,11 @@ export type UserContextType = {
   authChecked: boolean;
 };
 
-export const UserContext = createContext<UserContextType | undefined>(
+export const AuthContext = createContext<AuthContextType | undefined>(
   undefined,
 );
 
-export function UserContextProvider({
+export function AuthContextProvider({
   children,
 }: {
   children: React.ReactNode;
@@ -86,10 +86,10 @@ export function UserContextProvider({
   }, []);
 
   return (
-    <UserContext.Provider
+    <AuthContext.Provider
       value={{ user, login, logout, register, authChecked }}
     >
       {children}
-    </UserContext.Provider>
+    </AuthContext.Provider>
   );
 }
